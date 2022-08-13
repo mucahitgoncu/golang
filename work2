@@ -3,16 +3,21 @@ package main
 import (
 	"errors"
 	"fmt"
+	"math/rand"
 )
 
 func main() {
 	var classStudents [3][10]string = [3][10]string{{"ali", "ahmet", "mehmet", "can", "cengiz", "polat", "memati", "abdulhey", "erhan", "süleyman"}, {"acun", "adem", "adnan", "arda", "alperen", "ata", "aykut", "ceyhun", "kılıç", "demir"}, {"batu", "bahadır", "mehmet", "barış", "savaş", "burak", "bülent", "yılmaz", "caner", "cüneyt"}}
-	var classStudentNotes [3][10]int = [3][10]int{{56, 93, 75, 92, 45, 99, 50, 67, 95, 99}, {73, 89, 45, 88, 95, 77, 97, 23, 35, 45}, {96, 48, 89, 95, 90, 99, 97, 67, 53, 10}}
-
+	var classstudentNotes [3][10]int = [3][10]int{}
+	for r := 0; r < len(classstudentNotes); r++ {
+		for e := 0; e < len(classstudentNotes[e]); e++ {
+			classstudentNotes[r][e] = rand.Intn(100)
+		}
+	}
 	var err error
 	var err2 error
 
-	studentGradeEvaluation, err, err2 := studentGradeEvaluationFunc(classStudents, classStudentNotes)
+	studentGradeEvaluation, err, err2 := studentGradeEvaluationFunc(classStudents, classstudentNotes)
 	if err != nil {
 		fmt.Println(err)
 	} else {
@@ -67,27 +72,27 @@ func studentGradeEvaluationFunc(classStudents [3][10]string, studentNotes [3][10
 	return successfulClass, err, err2
 }
 func mostSuccessfulClass(classNumberOfAchievements [3]int) (successfulClassno int, err error, err2 error) {
-	var mostSuccessfulClassNumberOfSuccessfulStudents int = 0
+	var mostSuccessfulSlassNumberOfSuccessfulStudents int = 0
 	var successfulClass = 0
 	var successfulClass1 = 0
 	var successfulClassNumberOfSuccess1 = 0
 	var successfulClassNumberOfSuccess2 = 0
 	for i := 0; i < len(classNumberOfAchievements); i++ {
 
-		if mostSuccessfulClassNumberOfSuccessfulStudents <= classNumberOfAchievements[i] && 0 < classNumberOfAchievements[i] {
+		if mostSuccessfulSlassNumberOfSuccessfulStudents <= classNumberOfAchievements[i] && 0 < classNumberOfAchievements[i] {
 
-			if mostSuccessfulClassNumberOfSuccessfulStudents == classNumberOfAchievements[i] {
+			if mostSuccessfulSlassNumberOfSuccessfulStudents == classNumberOfAchievements[i] {
 
 				successfulClassNumberOfSuccess1 = classNumberOfAchievements[i]
 			}
-			mostSuccessfulClassNumberOfSuccessfulStudents = classNumberOfAchievements[i]
+			mostSuccessfulSlassNumberOfSuccessfulStudents = classNumberOfAchievements[i]
 
 			successfulClassNumberOfSuccess2 = classNumberOfAchievements[i]
 			successfulClass = i + 1
 		}
 
 	}
-	if mostSuccessfulClassNumberOfSuccessfulStudents == 0 {
+	if mostSuccessfulSlassNumberOfSuccessfulStudents == 0 {
 		err = errors.New("No successful class")
 	}
 	successfulClass1, err2 = bestClassCalculationFunc(successfulClassNumberOfSuccess1, successfulClassNumberOfSuccess2)

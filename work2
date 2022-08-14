@@ -79,7 +79,7 @@ func mostSuccessfulClass(classNumberOfAchievements [3]int) (successfulClassno in
 	var successfulClassNumberOfSuccess2 = 0
 	for i := 0; i < len(classNumberOfAchievements); i++ {
 
-		if mostSuccessfulSlassNumberOfSuccessfulStudents <= classNumberOfAchievements[i] && 0 < classNumberOfAchievements[i] {
+		if mostSuccessfulSlassNumberOfSuccessfulStudents <= classNumberOfAchievements[i] {
 
 			if mostSuccessfulSlassNumberOfSuccessfulStudents == classNumberOfAchievements[i] {
 
@@ -105,14 +105,12 @@ func bestClassCalculationFunc(successfulClassNumberOfSuccess1 int, successfulCla
 	var A int
 	var B int
 
-	A = successfulClassNumberOfSuccess1
-	B = successfulClassNumberOfSuccess2
+	A = successfulClassNumberOfSuccess2
+	B = successfulClassNumberOfSuccess1
 	if A > B {
 
 		successfulClass1 = A
-	} else if B > A {
-		successfulClass1 = B
-	} else if A == B {
+	} else {
 		err2 = errors.New("There is no single most successful class")
 
 	}
@@ -120,3 +118,4 @@ func bestClassCalculationFunc(successfulClassNumberOfSuccess1 int, successfulCla
 	return successfulClass1, err2
 
 }
+

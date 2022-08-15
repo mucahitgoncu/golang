@@ -4,9 +4,11 @@ import (
 	"errors"
 	"fmt"
 	"math/rand"
+	"time"
 )
 
 func main() {
+	rand.Seed(time.Now().UnixNano())
 	var classStudents [3][10]string = [3][10]string{{"ali", "ahmet", "mehmet", "can", "cengiz", "polat", "memati", "abdulhey", "erhan", "süleyman"}, {"acun", "adem", "adnan", "arda", "alperen", "ata", "aykut", "ceyhun", "kılıç", "demir"}, {"batu", "bahadır", "mehmet", "barış", "savaş", "burak", "bülent", "yılmaz", "caner", "cüneyt"}}
 	var classstudentNotes [3][10]int = [3][10]int{}
 	for r := 0; r < len(classstudentNotes); r++ {
